@@ -7,7 +7,8 @@ const Constraint = Matter.Constraint;
 
 var bob1,bob2,bob3,bob4,bob5
 var rope1,rope2,rope3,rope4,rope5
-var roof
+var roof,bobDiameter
+
 
 function preload()
 {
@@ -29,6 +30,8 @@ function setup() {
 	bob3 = new Bob(300,450,100);
 	bob4 = new Bob(370,450,100);
 	bob5 = new Bob(440,450,100);
+
+	 bobDiameter = bob1.radius*2
 
 	rope1 = new Rope(roof.body,bob1.body,-bobDiameter*2,0);
 	rope2 = new Rope(roof.body,bob2.body,-bobDiameter*2,0);
