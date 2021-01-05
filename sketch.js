@@ -7,7 +7,7 @@ const Constraint = Matter.Constraint;
 
 var bob1,bob2,bob3,bob4,bob5
 var rope1,rope2,rope3,rope4,rope5
-var roof,bobDiameter
+var roof
 
 
 function preload()
@@ -17,13 +17,12 @@ function preload()
 
 function setup() {
 	createCanvas(1000,500);
-
-
+	
 	engine = Engine.create();
 	world = engine.world;
 
 	//Create the Bodies Here.
-	roof = new Roof(300,100,370,20);
+	roof = new Ground(300,100,370,20);
 
 	bob1 = new Bob(160,450,100);
 	bob2 = new Bob(230,450,100);
@@ -31,13 +30,13 @@ function setup() {
 	bob4 = new Bob(370,450,100);
 	bob5 = new Bob(440,450,100);
 
-	 bobDiameter = bob1.radius*2
+	
 
-	rope1 = new Rope(roof.body,bob1.body,-bobDiameter*2,0);
-	rope2 = new Rope(roof.body,bob2.body,-bobDiameter*2,0);
-	rope3 = new Rope(roof.body,bob3.body,-bobDiameter*2,0);
-	rope4 = new Rope(roof.body,bob4.body,-bobDiameter*2,0);
-	rope5 = new Rope(roof.body,bob5.body,-bobDiameter*2,0);
+	rope1 = new Rope(bob1.body,roof.body,-140,0);
+	rope2 = new Rope(bob2.body,roof.body,-70,0);
+	rope3 = new Rope(bob3.body,roof.body,0,0);
+	rope4 = new Rope(bob4.body,roof.body,+70,0);
+	rope5 = new Rope(bob5.body,roof.body,+140,0);
 
 	Engine.run(engine);
   
@@ -46,7 +45,7 @@ function setup() {
 
 function draw() {
   rectMode(CENTER);
-  background(0);
+  background("grey");
 
   roof.display();
 
